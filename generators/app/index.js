@@ -24,7 +24,7 @@ module.exports = yeoman.Base.extend({
     this.fs.writeJSON(this.destinationPath('package.json'), packageContent);
     const readmeContent = this.fs.read(this.templatePath('README.md'));
     this.fs.write(this.destinationPath('README.md'), readmeContent.replace(/&name&/gi, packageContent.name).replace(/&description&/gi, packageContent.description));
-    // this.npmInstall(['coveralls', 'jest', 'typescript', 'tslint'], {'save-dev': true});
+    this.npmInstall(['coveralls', 'jest', 'typescript', 'tslint'], {'save-dev': true});
   },
 
   install: function () {
