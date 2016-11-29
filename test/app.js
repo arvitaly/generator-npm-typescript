@@ -15,7 +15,8 @@ describe('generator-npm-typescript:app', function () {
       '.travis.yml',
       'package.json',
       'tsconfig.json',
-      'tslint.json'
+      'tslint.json',
+      'README.md'
     ]);
   });
 });

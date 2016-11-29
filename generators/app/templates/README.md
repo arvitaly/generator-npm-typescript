@@ -2,7 +2,22 @@
 
 &description&
 
-[![Build Status](https://travis-ci.org/arvitaly/pagebot.svg?branch=master)](https://travis-ci.org/arvitaly/pagebot)
-[![npm version](https://badge.fury.io/js/pagebot.svg)](https://badge.fury.io/js/pagebot)
-[![Coverage Status](https://coveralls.io/repos/github/arvitaly/pagebot/badge.svg?branch=master)](https://coveralls.io/github/arvitaly/pagebot?branch=master)
+[![NPM version][npm-image]][npm-url] [![Build Status][travis-image]][travis-url] [![Dependency Status][daviddm-image]][daviddm-url] [![Coverage percentage][coveralls-image]][coveralls-url]
 [![experimental](http://badges.github.io/stability-badges/dist/experimental.svg)](http://github.com/badges/stability-badges)
+
+# Install
+
+    npm install &name& --save
+
+# Usage
+
+
+
+# API
+
+
+
+# Test
+
+    npm install
+    npm test

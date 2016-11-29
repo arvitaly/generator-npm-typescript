@@ -1,35 +1,30 @@
 'use strict';
 var yeoman = require('yeoman-generator');
-var chalk = require('chalk');
-var yosay = require('yosay');
 
 module.exports = yeoman.Base.extend({
-  prompting: function () {
-    this.log(yosay('Welcome to the supreme ' + chalk.red('generator-npm-typescript') + ' generator!'));
-    var prompts = [{
-      type: 'String',
-      name: 'name',
-      message: 'Name of your npm-package'
-    }];
-
-    return this.prompt(prompts).then(function (props) {
-      // To access props later use this.props.someAnswer;
-      this.props = props;
-    }.bind(this));
-  },
-
   writing: function () {
-    const filesForCopy = ['.travis.yml', 'package.json', 'tsconfig.json', 'tslint.json', '.vscode'];
+    const filesForCopy = ['.travis.yml', 'tsconfig.json', 'tslint.json', '.vscode', '__tests__'];
     filesForCopy.map(f =>
       this.fs.copy(
         this.templatePath(f),
         this.destinationPath(f)
       )
     );
-    const packageContent = this.fs.readJSON('package.json');
-    packageContent.name = this.props.name;
-    packageContent.version = '0.0.1';
-    this.fs.writeJSON('package.json', packageContent);
+    const packageContent = this.fs.readJSON(this.destinationPath('package.json')) || {};
+    packageContent.jest = {
+      automock: true,
+      unmockedModulePathPatterns: [
+        'react'
+      ]
+    };
+    packageContent.scripts = packageContent.scripts || {};
+    packageContent.scripts.test = 'tsc && tslint --project=tsconfig.json && jest --verbose';
+    packageContent.scripts['watch:test'] = 'jest --verbose';
+    packageContent.devDependencies = packageContent.devDependencies || {};
+    this.fs.writeJSON(this.destinationPath('package.json'), packageContent);
+    const readmeContent = this.fs.read(this.templatePath('README.md'));
+    this.fs.write(this.destinationPath('README.md'), readmeContent.replace(/&name&/gi, packageContent.name).replace(/&description&/gi, packageContent.description));
+    // this.npmInstall(['coveralls', 'jest', 'typescript', 'tslint'], {'save-dev': true});
   },
 
   install: function () {
