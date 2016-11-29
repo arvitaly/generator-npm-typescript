@@ -19,7 +19,7 @@ module.exports = yeoman.Base.extend({
     };
     packageContent.scripts = packageContent.scripts || {};
     packageContent.scripts.test = 'tsc && tslint --project=tsconfig.json && jest --verbose';
-    packageContent.scripts['watch:test'] = 'jest --verbose';
+    packageContent.scripts['watch:test'] = 'jest --watch';
     packageContent.devDependencies = packageContent.devDependencies || {};
     this.fs.writeJSON(this.destinationPath('package.json'), packageContent);
     const readmeContent = this.fs.read(this.templatePath('README.md'));
