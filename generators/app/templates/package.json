@@ -1,0 +1,19 @@
+{
+  "name": "app",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "tsc && tslint --project=tsconfig.json && jest --verbose",
+    "watch:test": "jest --watch"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "coveralls": "^2.11.15",
+    "jest": "^17.0.3",
+    "tslint": "^4.0.2",
+    "typescript": "^2.0.10"
+  }
+}
