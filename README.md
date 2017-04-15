@@ -1,4 +1,6 @@
 # generator-npm-typescript [![NPM version][npm-image]][npm-url] [![Build Status][travis-image]][travis-url] [![Dependency Status][daviddm-image]][daviddm-url] [![Coverage percentage][coveralls-image]][coveralls-url]
+
+[![Greenkeeper badge](https://badges.greenkeeper.io/arvitaly/generator-npm-typescript.svg)](https://greenkeeper.io/)
 > Generator for npm package, typings on typescript
 
 ## Installation
