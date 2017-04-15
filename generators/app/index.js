@@ -1,22 +1,17 @@
 'use strict';
 var yeoman = require('yeoman-generator');
 
-module.exports = yeoman.Base.extend({
+module.exports = yeoman.extend({
   writing: function () {
-    const filesForCopy = ['.travis.yml', 'tsconfig.json', 'tslint.json', '.vscode', '__tests__'];
+    const filesForCopy = ['.travis.yml', 'tsconfig.json', 'tslint.json', '.vscode'];
     filesForCopy.map(f =>
       this.fs.copy(
         this.templatePath(f),
         this.destinationPath(f)
       )
     );
-    const packageContent = this.fs.readJSON(this.destinationPath('package.json')) || {homepage: ''};
-    packageContent.jest = {
-      automock: true,
-      unmockedModulePathPatterns: [
-        'react'
-      ]
-    };
+    const packageContent = this.fs.readJSON(this.destinationPath('package.json')) || { homepage: '' };
+    packageContent.jest = {};
     packageContent.scripts = packageContent.scripts || {};
     packageContent.scripts.test = 'tsc && tslint --project=tsconfig.json && jest --verbose';
     packageContent.scripts['watch:test'] = 'jest --watch';
@@ -28,7 +23,7 @@ module.exports = yeoman.Base.extend({
       .replace(/&author&/gi, author)
       .replace(/&name&/gi, packageContent.name)
       .replace(/&description&/gi, packageContent.description));
-    this.npmInstall(['coveralls', 'jest', 'typescript', 'tslint', '@types/jest'], {'save-dev': true});
+    this.yarnInstall(['coveralls', 'jest', 'typescript', 'tslint', '@types/jest'], { 'dev': true });
   },
 
   install: function () {
