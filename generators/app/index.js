@@ -16,7 +16,7 @@ module.exports = yeoman.extend({
     packageContent.scripts.test = 'tsc && tslint --project=tsconfig.json && jest --verbose --coverage';
     packageContent.scripts['watch:test'] = 'jest --watch';
     packageContent.devDependencies = packageContent.devDependencies || {};
-    const author = packageContent.homepage.indexOf('github.com') > -1 ? packageContent.homepage.match(/^https:\/\/github.com\/([^/]+)/gi)[0].substr(19) : '';
+    const author = packageContent.homepage && packageContent.homepage.indexOf('github.com') > -1 ? packageContent.homepage.match(/^https:\/\/github.com\/([^/]+)/gi)[0].substr(19) : '';
     this.fs.writeJSON(this.destinationPath('package.json'), packageContent);
     const readmeContent = this.fs.read(this.templatePath('README.md'));
     this.fs.write(this.destinationPath('README.md'), readmeContent
