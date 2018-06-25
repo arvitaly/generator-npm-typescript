@@ -1,7 +1,5 @@
 # generator-npm-typescript [![NPM version][npm-image]][npm-url] [![Build Status][travis-image]][travis-url] [![Dependency Status][daviddm-image]][daviddm-url] [![Coverage percentage][coveralls-image]][coveralls-url]
-
-[![Greenkeeper badge](https://badges.greenkeeper.io/arvitaly/generator-npm-typescript.svg)](https://greenkeeper.io/)
-> Generator for npm package, typings on typescript
+> Generator for creating npm-package with typescript
 
 ## Installation
 
@@ -27,7 +25,7 @@ yo npm-typescript
 
 ## License
 
-MIT © [Alexandro]()
+MIT © [arvitaly]()
 
 
 [npm-image]: https://badge.fury.io/js/generator-npm-typescript.svg

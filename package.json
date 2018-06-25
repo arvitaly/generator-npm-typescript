@@ -1,56 +1,88 @@
 {
-  "name": "generator-npm-typescript",
-  "version": "0.1.9",
-  "description": "Generator for npm package, typings on typescript",
-  "homepage": "https://github.com/arvitaly/generator-npm-typescript",
-  "author": {
-    "name": "Alexandro",
-    "email": "arvitaly@list.ru",
-    "url": ""
-  },
-  "files": [
-    "generators"
-  ],
-  "main": "generators/index.js",
-  "keywords": [
-    "npm",
-    "typescript",
-    "travis",
-    "coveralls",
-    "coverage",
-    "jest",
-    "yeoman-generator"
-  ],
-  "dependencies": {
-    "chalk": "^1.0.0",
-    "yeoman-generator": "^1.1.1",
-    "yosay": "^2.0.0"
-  },
-  "devDependencies": {
-    "yeoman-test": "^1.0.0",
-    "yeoman-assert": "^3.0.0",
-    "eslint": "^3.1.1",
-    "eslint-config-xo-space": "^0.15.0",
-    "gulp": "^3.9.0",
-    "gulp-coveralls": "^0.1.0",
-    "gulp-eslint": "^3.0.1",
-    "gulp-exclude-gitignore": "^1.0.0",
-    "gulp-istanbul": "^1.0.0",
-    "gulp-line-ending-corrector": "^1.0.1",
-    "gulp-mocha": "^4.1.0",
-    "gulp-plumber": "^1.0.0",
-    "gulp-nsp": "^2.1.0"
-  },
-  "eslintConfig": {
-    "extends": "xo-space",
-    "env": {
-      "mocha": true
-    }
-  },
-  "repository": "arvitaly/generator-npm-typescript",
-  "scripts": {
-    "prepublish": "gulp prepublish",
-    "test": "gulp"
-  },
-  "license": "MIT"
+    "name": "generator-npm-typescript",
+    "version": "0.2.1",
+    "description": "Generator for creating npm-package with typescript",
+    "homepage": "https://github.com/arvitaly/generator-npm-typescript",
+    "author": {
+        "name": "arvitaly",
+        "email": "arvitaly@list.ru"
+    },
+    "files": [
+        "generators"
+    ],
+    "main": "generators/index.js",
+    "keywords": [
+        "npm",
+        "typescript",
+        "package",
+        "yeoman-generator"
+    ],
+    "devDependencies": {
+        "@types/jest": "^23.1.1",
+        "@types/yeoman-generator": "^2.0.3",
+        "@types/yeoman-test": "^1.7.4",
+        "chalk": "^2.4.1",
+        "coveralls": "^3.0.0",
+        "eslint": "^4.19.1",
+        "eslint-config-prettier": "^2.9.0",
+        "eslint-config-xo": "^0.20.1",
+        "eslint-plugin-prettier": "^2.6.0",
+        "husky": "^0.14.3",
+        "jest": "^22.0.6",
+        "lint-staged": "^6.1.1",
+        "nsp": "^2.8.0",
+        "prettier": "^1.11.1",
+        "yeoman-assert": "^3.1.0",
+        "yeoman-test": "^1.7.0",
+        "yosay": "^2.0.2"
+    },
+    "engines": {
+        "npm": ">= 4.0.0"
+    },
+    "dependencies": {
+        "yeoman-generator": "^2.0.1"
+    },
+    "jest": {
+        "testEnvironment": "node"
+    },
+    "scripts": {
+        "prepublishOnly": "nsp check",
+        "pretest": "tslint --project tsconfig.json",
+        "precommit": "lint-staged",
+        "test": "jest"
+    },
+    "lint-staged": {
+        "*.js": [
+            "eslint --fix",
+            "git add"
+        ],
+        "*.json": [
+            "prettier --write",
+            "git add"
+        ]
+    },
+    "eslintConfig": {
+        "extends": [
+            "xo",
+            "prettier"
+        ],
+        "env": {
+            "jest": true,
+            "node": true
+        },
+        "rules": {
+            "prettier/prettier": [
+                "error",
+                {
+                    "singleQuote": true,
+                    "printWidth": 90
+                }
+            ]
+        },
+        "plugins": [
+            "prettier"
+        ]
+    },
+    "repository": "arvitaly/generator-npm-typescript",
+    "license": "MIT"
 }
