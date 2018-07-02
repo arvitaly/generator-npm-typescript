@@ -1,6 +1,6 @@
 {
     "name": "generator-npm-typescript",
-    "version": "0.2.1",
+    "version": "0.2.2",
     "description": "Generator for creating npm-package with typescript",
     "homepage": "https://github.com/arvitaly/generator-npm-typescript",
     "author": {
